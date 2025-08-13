@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Selamat!</title>
+  <style>
+    body {
+      background-color: pink;
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive;
+    }
+
+    h1 {
+      font-size: 60px;
+      margin-top: 100px;
+      color: #fff;
+      text-shadow: 2px 2px 8px #ff69b4;
+    }
+
+    video {
+      margin-top: 50px;
+      width: 80%;
+      max-width: 600px;
+      border: 5px solid white;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Yeay Selamat kamu sudah selesai, tapi sebelum dapet hadiah kamu nonton video dulu yaaa 🎉</h1>
+
+  <!-- Video Ucapan -->
+  <video controls>
+  <source src="ucapan.mp4" type="video/mp4">
+</video>
+
+<p style="margin-top: 20px; font-size: 18px; font-weight: bold; text-align: center;">
+  Di download dulu ya fotonya baru dibuka kadonya 😊
+</p>
+<div style="text-align: center; margin-top: 10px;">
+  <a href="gambar.jpg" download="foto-kado.jpg" 
+     style="display: inline-block; padding: 10px 20px; background-color: #ff69b4; color: white; text-decoration: none; border-radius: 8px;">
+    📥 Download Foto
+  </a>
+</div>
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    // Fungsi untuk membuat efek ledakan confetti
+    function showConfetti() {
+      const duration = 5 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      const interval = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        confetti({
+          ...defaults,
+          particleCount: 50,
+          origin: {
+            x: randomInRange(0.1, 0.9),
+            y: Math.random() - 0.2
+          }
+        });
+      }, 250);
+    }
+
+    // Jalankan saat halaman dimuat
+    window.onload = showConfetti;
+  </script>
+</body>
+</html>
+

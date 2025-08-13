@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misi Pengetahuan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="floating-text">kita lucu binggbingg</div>
+<div class="floating-text love-text">I LOVE U</div>
+
+    <button onclick="document.getElementById('bg-music').play()">🎵 Putar Musik</button>
+
+<audio id="bg-music" loop>
+  <source src="I See the Light (From Tangled Soundtrack Version).mp3" type="audio/mpeg">
+  Browser Anda tidak mendukung pemutar audio.
+</audio>
+
+<div class="floating-images">
+  <img src="foto1.jpg" class="float-img">
+  <img src="foto2.jpg" class="float-img">
+  <img src="foto3.jpg" class="float-img">
+  <img src="foto4.jpg" class="float-img">
+  <img src="foto6.jpg" class="float-img">
+  <img src="foto7.jpg" class="float-img">
+  <img src="foto8.jpg" class="float-img">
+  <img src="foto9.jpg" class="float-img">
+</div>
+
+
+    <div class="container">
+        <h1>Misi Pengetahuan</h1>
+        <div id="question">Loading soal...</div>
+        <form id="missionForm">
+            <label for="answer">Jawaban Anda:</label>
+            <input type="text" id="answer" required>
+            <button type="submit">Kirim Jawaban</button>
+        </form>
+        <div id="progress"></div>
+    </div>
+
+    <script src="script.js"></script>
+<script>
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  const floatImages = document.querySelectorAll('.float-img');
+
+  floatImages.forEach(img => {
+    img.style.top = `${random(0, 80)}%`;
+    img.style.left = `${random(0, 100)}%`;
+    animateImage(img);
+  });
+
+  function animateImage(img) {
+    const duration = random(4, 8); // Lebih cepat!
+    const deltaX = random(-100, 100);
+    const deltaY = random(-100, 100);
+
+    img.animate([
+      { transform: 'translate(0, 0)' },
+      { transform: `translate(${deltaX}px, ${deltaY}px)` }
+    ], {
+      duration: duration * 1000,
+      iterations: Infinity,
+      direction: 'alternate',
+      easing: 'ease-in-out'
+    });
+  }
+</script>
+<script>
+  const floatingText = document.querySelector('.floating-text');
+
+  function moveTextRandomly() {
+    const x = Math.random() * window.innerWidth * 0.8;
+    const y = Math.random() * window.innerHeight * 0.8;
+    floatingText.style.left = `${x}px`;
+    floatingText.style.top = `${y}px`;
+  }
+
+  setInterval(moveTextRandomly, 2000); // pindah posisi tiap 2 detik
+  moveTextRandomly(); // awal langsung bergerak
+</script>
+<script>
+  const loveText = document.querySelector('.love-text');
+
+  function moveLoveTextRandomly() {
+    const x = Math.random() * window.innerWidth * 0.8;
+    const y = Math.random() * window.innerHeight * 0.8;
+    loveText.style.left = `${x}px`;
+    loveText.style.top = `${y}px`;
+  }
+
+  setInterval(moveLoveTextRandomly, 1800); // pindah tiap 1.8 detik
+  moveLoveTextRandomly();
+</script>
+
+
+</body>
+</html>
